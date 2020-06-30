@@ -16,6 +16,6 @@ def get_message_by_id(messageId):  # noqa: E501
     :rtype: Message
     """
 
-    response = Message("Welcome to Xchange 2020!")
+    response = Message("A comprehensive journey into the future of DevOps")
 
     return response
