@@ -125,9 +125,11 @@ pipeline {
           script {
             def IMAGE_TAG = env.GIT_COMMIT.take(7)
             def IMAGE_TAG_PREFIX = 'api'
+            def NOTIFY = false
             if (env.TAG_NAME) {
               IMAGE_TAG = env.TAG_NAME
               IMAGE_TAG_PREFIX = 'rel'
+              NOTIFY = true
             }
             // sh """
             //   pip install -r scripts/requirements.txt
@@ -148,6 +150,9 @@ pipeline {
               git tag ${IMAGE_TAG_PREFIX}-${IMAGE_TAG}
               git push origin master --tags
             """
+            if (NOTIFY) {
+              slackSend color: "good", message: "API version updated to '${IMAGE_TAG}'"
+            }
           }
         }
       }
