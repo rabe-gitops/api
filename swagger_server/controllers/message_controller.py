@@ -16,6 +16,6 @@ def get_message_by_id(messageId):  # noqa: E501
     :rtype: Message
     """
 
-    response = Message("A comprehensive journey into the future of Devops")
+    response = Message("A comprehensive journey into the PRESENT of DevOps")
 
     return response
